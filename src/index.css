@@ -75,6 +75,10 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
@@ -93,4 +97,84 @@
   .premium-button {
     @apply relative overflow-hidden bg-gradient-to-r from-accent to-green-400 text-black font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 hover:scale-105;
   }
+
+  .premium-button::before {
+    content: '';
+
+    @apply absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .premium-button:hover::before {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0%;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgb(0 255 136 / 30%);
+  }
+
+  to {
+    box-shadow: 0 0 30px rgb(0 255 136 / 60%);
+  }
+}
+
+.premium-button {
+  @apply animate-float;
+}
+
+.premium-button:hover {
+  @apply animate-glow;
 }
