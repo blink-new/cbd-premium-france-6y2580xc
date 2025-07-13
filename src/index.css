@@ -91,7 +91,7 @@
   }
   
   .product-card {
-    @apply group relative overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-accent/50;
+    @apply relative overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-accent/50;
   }
   
   .premium-button {
@@ -106,6 +106,10 @@
 
   .premium-button:hover::before {
     @apply opacity-100;
+  }
+
+  .premium-button:hover {
+    animation: glow 2s ease-in-out infinite alternate;
   }
 }
 
@@ -169,12 +173,4 @@
   to {
     box-shadow: 0 0 30px rgb(0 255 136 / 60%);
   }
-}
-
-.premium-button {
-  @apply animate-float;
-}
-
-.premium-button:hover {
-  @apply animate-glow;
 }
